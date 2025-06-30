@@ -13,6 +13,16 @@ const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
+// Handle color changes from the color picker
+const colorInput = document.getElementById('color-picker');
+if (colorInput) {
+  // Set the initial input value to match the cube color
+  colorInput.value = '#00ff00';
+  colorInput.addEventListener('input', (event) => {
+    cube.material.color.set(event.target.value);
+  });
+}
+
 // Position the camera so that the cube is visible
 camera.position.z = 5;
 
